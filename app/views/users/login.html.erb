@@ -1,3 +1,4 @@
+<!-- #forma 1 de hacer un formulario -->
 <!-- <form method="post">
 	<div>
 		<input type="text" name="email" placeholder="Introduce tu email">
@@ -10,3 +11,31 @@
 		<button type="submit">Entrar</button>
 	</div>
 </form> -->
+
+
+
+<!-- forma 2 de hacer un formulario -->
+<!-- # <%= form_tag do %>
+#    <%= text_field_tag(:email,nil,placeholder:"Email") %><br><br>
+#    <%= password_field_tag(:password,nil,placeholder:'Contraseña') %><br><br>
+
+#    <%= submit_tag("entrar")%>
+# <% end %> -->
+
+
+
+
+<!-- forma 3 de hacer un formulario -->
+<!--<%= form_tag do %>
+   <%= text_field(:user,:email,placeholder:"Email") %><br><br>
+   <%= password_field(:user,:password,placeholder:'Contraseña') %><br><br>
+   <%= submit_tag("entrar")%>
+<% end %> -->
+
+<!-- 
+forma 4 -->
+<%= form_for @user, url:{action: 'new_session'} do |f| %>
+    <%= f.text_field :email %>
+    <%= f.password_field :password %>
+    <%= f.submit 'Entrar' %>
+<% end %>

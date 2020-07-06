@@ -21,9 +21,9 @@
      <nav>
       <%= link_to 'Inicio', welcome_home_path %>
       <% if user_signed_in? %>
-      <%= link_to "Salir", logout_path %>
+      <%= link_to "Salir", destroy_user_session_path,method: :delete %>
       <% else %>
-      <%= link_to "Entrar",login_path%>
+      <%= link_to "Entrar",new_user_session_path%>
       <% end %>
     </nav>
   </section>
@@ -36,7 +36,7 @@
     </section>
 
     <section>
-        <small>Imagenes inc ~copy;todos los derechos reservados</small>
+        <small>Imagenes inc &copy;todos los derechos reservados</small>
     </section>
   </body>
 </html>
