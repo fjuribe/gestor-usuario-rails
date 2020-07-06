@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   get 'welcome/index', to: "welcome#index", as:'welcome_home'
 
 
-  get "login",  to: 'users#login', as:'login'
-  get "logout", to: 'users#logout', as:'logout'
+  get "login",  to: 'users#login',        as:'login'
+  post "login", to: 'users#new_session',  as:'user_new_session'
+  get "logout", to: 'users#logout',       as:'logout'
   #root
   root to:"welcome#index"
   

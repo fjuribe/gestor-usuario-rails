@@ -16,21 +16,22 @@
   </head>
 
   <body>
-<!--     <p class="notice"><% notice %></p>
-    <p class="alert"><% alert %></p> -->
-
 
     <section>
-       <nav>
-          <!-- <a href="<%= welcome_home_path %>" title="">Inicio</a> -->
-          <%= link_to 'Inicio', welcome_home_path %>
-       </nav>
-    </section>
+     <nav>
+      <%= link_to 'Inicio', welcome_home_path %>
+      <% if user_signed_in? %>
+      <%= link_to "Salir", logout_path %>
+      <% else %>
+      <%= link_to "Entrar",login_path%>
+      <% end %>
+    </nav>
+  </section>
 
 
     <section>   
-      <p class="notice"><% notice %></p>
-      <p class="alert"><% alert %></p>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
        <%= yield %>
     </section>
 
