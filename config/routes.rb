@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   #photos controller
-  get 'photos/:id', to: "photos#show", as:'photo_detail'
+  get 'photos/new',    to:'photos#new',        as:'photo_new'
+  post 'photos',       to:'photos#create',     as:'photo_create'
+  get 'photos/:id',    to:'photos#show',       as:'photo_detail'
   
   #welcome controller
-  get 'welcome/index', to: "welcome#index", as:'welcome_home'
+  get 'welcome/index', to:'welcome#index',     as:'welcome_home'
 
 
   # get "login",  to: 'users#login',        as:'login'

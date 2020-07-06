@@ -24,5 +24,5 @@ class Photo < ApplicationRecord
 	validates :license, inclusion:{in: Photo.licenses}
 	validates :visibility, inclusion:{in: Photo.visibilities}
 
-	belongs_to :users 
+	belongs_to :user
 end

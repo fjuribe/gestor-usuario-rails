@@ -1,0 +1,27 @@
+<%= form_for @photo,url:{action:"create"} do |f| %>
+<%= f.label :user_id, 'Usuario' %>
+<%= f.select :user_id,User.all.collect{|user|[user.name,user.id]},include_blank: false %>
+<br><br>
+
+<%= f.label :name,"Titulo" %>
+<%= f.text_field :name %>
+<br><br>
+
+<%= f.label :url,"Url" %>
+<%= f.text_field :url %>
+<br><br>
+
+<%= f.label :description,"Descripcion" %>
+<%= f.text_area :description %>
+<br><br>
+
+<%= f.label :visibility,"visibilidad" %>
+<%= f.select :visibility , Photo::visibilities.keys.to_a %>
+<br><br>
+
+<%= f.label :license,"license" %>
+<%= f.select :license , Photo::licenses.keys.to_a %>
+<br><br>
+
+<%= f.submit "crear foto"%>
+<% end %>
