@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+        <% if content_for?(:title)%>
+           <%= yield :title %>
+        <% else %>
+           bienvenido mi webapp
+        <% end %>
+    </title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+<!--     <p class="notice"><% notice %></p>
+    <p class="alert"><% alert %></p> -->
+
+
+    <section>
+       <nav>
+          <!-- <a href="<%= welcome_home_path %>" title="">Inicio</a> -->
+          <%= link_to 'Inicio', welcome_home_path %>
+       </nav>
+    </section>
+
+
+    <section>   
+      <p class="notice"><% notice %></p>
+      <p class="alert"><% alert %></p>
+       <%= yield %>
+    </section>
+
+    <section>
+        <small>Imagenes inc ~copy;todos los derechos reservados</small>
+    </section>
+  </body>
+</html>

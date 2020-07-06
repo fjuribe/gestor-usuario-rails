@@ -1,0 +1,13 @@
+<h1>bienvenido a nuestro demo</h1>
+<% if @photos.any?%>
+<h2>Ultimas fotos publicadas</h2>
+    <% @photos.each do|photo| %>
+<!--        <a href="<%= photo_detail_path(photo.id) %>"><img src="<%= photo.url %>" alt="<%= photo.name %>" height="180"></a>  --> 
+
+              <%= link_to photo_detail_path(photo.id) do %>
+                 <img src="<%= photo.url %>" alt="<%= photo.name %>" height="180">
+              <% end %>
+    <% end %>
+<% else %>
+   <p>Se el primero en publicar una foto</p>
+<% end %>

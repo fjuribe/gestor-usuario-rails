@@ -1,0 +1,19 @@
+<% content_for :title do %>
+    <%= @photos.name %>
+<% end %>
+
+<h1><%= @photos.name %></h1>
+
+
+<img onclick="contador()" src="<%= @photos.url %>" alt="<%= @photos.name %>" height="200">
+<h2>Description</h2>
+<p><%= @photos.description %></p>
+<h2>Autor</h2>
+<p><%= @photos.admin_user.email %></p>
+<script>
+	let i=0;
+	function contador(){
+        i++;
+        console.log(i);
+	}
+</script>
