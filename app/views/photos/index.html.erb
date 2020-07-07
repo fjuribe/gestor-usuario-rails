@@ -1,0 +1,12 @@
+<% content_for :titiel do %>
+Un listado de fotos 
+<% end %>
+
+<h1>Listado de fotos</h1>
+
+
+<% @photos.each do |photo| %>
+     <%= link_to photo_detail_path(photo.id) do %>
+          <img src="<%= photo.url %>" alt="<%= photo.name %>" height="180">
+     <% end %>
+<% end %>
