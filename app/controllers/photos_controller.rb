@@ -1,6 +1,16 @@
 class PhotosController < ApplicationController
 	#niega acceso a new y create  si no estas autemtificado
 	before_action :authenticate_user!,only: [:new,:create]
+
+
+  def index
+    if current_user    
+       @photos=Photo.where(user: current_user).or(Photo.where(visibility: :pub))
+    else
+       @photos=Photo.where(visibility: :pub)
+    end
+  end
+
   def new
   	@photo=Photo.new
   end
@@ -10,7 +20,7 @@ class PhotosController < ApplicationController
     @photo=Photo.create(photo_params)
     @photo.user = current_user
     if @photo.save
-    	redirect_to photo_detail_path(@photo),notice: "Foto creada correctamente"
+    	redirect_to photo_detail_path(@photo), notice: "Foto creada correctamente"
     else
     	flash[:alert]="ha habido un error en guardar la foto"+@photo.errors.full_messages.to_sentence
         render :new   	
@@ -19,7 +29,20 @@ class PhotosController < ApplicationController
 
 
   def show
-  	@photo=Photo.find_by_id(params[:id])
+    if current_user    
+       @possible_photos=Photo.where(user: current_user).or(Photo.where(visibility: :pub))
+   else
+       @possible_photos=Photo.where(visibility: :pub)
+   end
+  
+
+  @photo= @possible_photos.find_by_id(params[:id])
+    #para agregar una pagina de error 404
+    if @photo.nil?
+      render file: "#{Rails.root}/public/404.html", status: :not_found #404 
+    else
+      render :show
+    end
   end
 
 
