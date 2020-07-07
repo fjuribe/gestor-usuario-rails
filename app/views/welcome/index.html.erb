@@ -4,7 +4,7 @@
     <% @photos.each do|photo| %>
 <!--        <a href="<%= photo_detail_path(photo.id) %>"><img src="<%= photo.url %>" alt="<%= photo.name %>" height="180"></a>  --> 
 
-              <%= link_to photo_detail_path(photo.id) do %>
+              <%= link_to photo_path(photo.id) do %>
                  <img src="<%= photo.url %>" alt="<%= photo.name %>" height="180">
               <% end %>
     <% end %>
