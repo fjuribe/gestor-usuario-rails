@@ -1,7 +1,9 @@
 <%= form_for @photo,url:{action:"create"} do |f| %>
-<%= f.label :user_id, 'Usuario' %>
+<!--lo borramos para que al momento de asignar una foto se asigne el usuario de manera automatica -->
+<!--<%= f.label :user_id, 'Usuario' %>
 <%= f.select :user_id,User.all.collect{|user|[user.name,user.id]},include_blank: false %>
 <br><br>
+-->
 
 <%= f.label :name,"Titulo" %>
 <%= f.text_field :name %>

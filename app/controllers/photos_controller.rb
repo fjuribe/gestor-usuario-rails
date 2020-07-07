@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+	#niega acceso a new y create  si no estas autemtificado
+	before_action :authenticate_user!,only: [:new,:create]
   def new
   	@photo=Photo.new
   end
@@ -6,6 +8,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo=Photo.create(photo_params)
+    @photo.user = current_user
     if @photo.save
     	redirect_to photo_detail_path(@photo),notice: "Foto creada correctamente"
     else
@@ -21,6 +24,6 @@ class PhotosController < ApplicationController
 
   private 
   def photo_params
-  	params.require(:photo).permit(:name,:url,:description,:license,:visibility,:user_id)
+  	params.require(:photo).permit(:name,:url,:description,:license,:visibility)
   end
 end
