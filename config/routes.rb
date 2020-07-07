@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   # patch 'photos/:id',    to:'photos#update',   as:'photo_update'
   # delete 'photos/:id',    to:'photos#destroy',     as:'photo_destroy'
   #welcome controller
-  get 'photos', to:'photos#index',     as:'welcome_home'
+  #get 'photos', to:'photos#index',     as:'welcome_home'
 
 
   # get "login",  to: 'users#login',        as:'login'

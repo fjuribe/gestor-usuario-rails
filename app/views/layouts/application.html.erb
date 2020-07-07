@@ -20,7 +20,6 @@
     <section>
      <nav>
       <%= link_to 'Inicio', photos_path %>
-  <!--     <%= link_to "Listado de fotos",welcome_home_path %> -->
       <% if user_signed_in? %>
           <%= link_to "Mis fotos",my_photos_path %>
           <%= link_to 'Crear foto',new_photo_path %>  
