@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
 	#niega acceso a new y create  si no estas autemtificado
-	before_action :authenticate_user!,only: [:new,:create]
+	before_action :authenticate_user!,only: [:new,:create,:edit,:update,:destroy]
   include PhotosHelper
   
 
@@ -15,6 +15,10 @@ class PhotosController < ApplicationController
 
   def new
   	@photo=Photo.new
+  end
+
+  def my_photos
+    @photos=current_user.photo
   end
 
 
@@ -47,6 +51,38 @@ class PhotosController < ApplicationController
     end
   end
 
+
+
+
+def edit
+     @photo=current_user.photo.find_by_id(params[:id])
+     if @photo.nil?
+        render file: "#{Rails.root}/public/404.html", status: :not_found #404 
+    else
+        render :edit    
+    end
+end
+
+def update
+    @photo=current_user.photo.find_by_id(params[:id])
+    if @photo.nil?
+      render file: "#{Rails.root}/public/404.html", status: :not_found #404 
+    elsif @photo.update(photo_params)
+      flash[:notice]="La foto "+@photo.name+" se ha actualizado correctamente"
+      redirect_to photo_detail_path(@photo) 
+    else
+      flash[:alert]="La foto "+@photo.name+" se ha actualizado correctamente" 
+      render :edit     
+    end
+end
+
+
+def destroy
+  @photo=current_user.photo.find_by_id(params[:id])
+  @photo.destroy
+  flash[:notice]="La foto "+@photo.name+" ha sido eliminada correctamente"
+  redirect_to :my_photos
+end
 
   private 
   def photo_params

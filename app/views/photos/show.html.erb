@@ -9,7 +9,19 @@
 <h2>Description</h2>
 <p><%= @photo.description %></p>
 <h2>Autor</h2>
-<p><%= @photo.user_id %></p>
+<p><%= @photo.user.email %></p>
+
+<br><br>
+
+
+<% if @photo.user == current_user %>
+    <%= link_to "Editar",photo_edit_path %>
+    <%= link_to "Eliminar",photo_destroy_path,method: :delete ,data:{confirm:'¿Estas seguro de eliminar esta foto?'} %>
+
+<% end %>
+
+
+
 <script>
 	let i=0;
 	function contador(){
