@@ -1,0 +1,1 @@
+BADWORDS=['weon','aweonao','culiao ','tonto weón','maricon','saco de guewas','conchetumare','shushetumare','rechuchatumare','hijo de puta']

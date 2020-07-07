@@ -5,24 +5,24 @@
 <br><br>
 -->
 
-<%= f.label :name,"Titulo" %>
+<%= f.label :name,"Titulo",require: true %>
 <%= f.text_field :name %>
 <br><br>
 
 <%= f.label :url,"Url" %>
-<%= f.text_field :url %>
+<%= f.text_field :url ,require: true%>
 <br><br>
 
 <%= f.label :description,"Descripcion" %>
-<%= f.text_area :description %>
+<%= f.text_area :description%>
 <br><br>
 
 <%= f.label :visibility,"visibilidad" %>
-<%= f.select :visibility , Photo::visibilities.keys.to_a %>
+<%= f.select :visibility , Photo::visibilities.keys.to_a ,require: true%>
 <br><br>
 
 <%= f.label :license,"license" %>
-<%= f.select :license , Photo::licenses.keys.to_a %>
+<%= f.select :license , Photo::licenses.keys.to_a ,require: true%>
 <br><br>
 
 <%= f.submit "crear foto"%>

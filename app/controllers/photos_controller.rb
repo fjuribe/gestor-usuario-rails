@@ -12,6 +12,7 @@ class PhotosController < ApplicationController
     if @photo.save
     	redirect_to photo_detail_path(@photo),notice: "Foto creada correctamente"
     else
+    	flash[:alert]="ha habido un error en guardar la foto"+@photo.errors.full_messages.to_sentence
         render :new   	
     end
   end
