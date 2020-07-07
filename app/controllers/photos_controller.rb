@@ -1,14 +1,16 @@
 class PhotosController < ApplicationController
 	#niega acceso a new y create  si no estas autemtificado
 	before_action :authenticate_user!,only: [:new,:create]
-
+  include PhotosHelper
+  
 
   def index
-    if current_user    
-       @photos=Photo.where(user: current_user).or(Photo.where(visibility: :pub))
-    else
-       @photos=Photo.where(visibility: :pub)
-    end
+    # if current_user    
+    #    @photos=Photo.where(user: current_user).or(Photo.where(visibility: :pub))
+    # else
+    #    @photos=Photo.where(visibility: :pub)
+    # end
+    @photos=get_possible_photos
   end
 
   def new
@@ -29,12 +31,12 @@ class PhotosController < ApplicationController
 
 
   def show
-    if current_user    
-       @possible_photos=Photo.where(user: current_user).or(Photo.where(visibility: :pub))
-   else
-       @possible_photos=Photo.where(visibility: :pub)
-   end
-  
+   # if current_user    
+   #     @possible_photos=Photo.where(user: current_user).or(Photo.where(visibility: :pub))
+   # else
+   #     @possible_photos=Photo.where(visibility: :pub)
+   # end
+  @possible_photos=get_possible_photos
 
   @photo= @possible_photos.find_by_id(params[:id])
     #para agregar una pagina de error 404
