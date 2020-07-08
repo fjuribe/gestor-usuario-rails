@@ -40,8 +40,6 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-
-
 end
 
 group :test do
@@ -62,3 +60,7 @@ gem "active_skin"
 gem "annotate"
 
 gem 'devise'
+
+gem 'bootstrap', '~> 4.5.0'
+gem 'jquery-rails'
+gem 'popper_js', '~> 1.14.5'

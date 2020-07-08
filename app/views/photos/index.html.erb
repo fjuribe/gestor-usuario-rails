@@ -7,6 +7,6 @@ Un listado de fotos
 
 <% @photos.each do |photo| %>
      <%= link_to photo_path(photo.id) do %>
-          <img src="<%= photo.url %>" alt="<%= photo.name %>" height="180">
+          <img src="<%= photo.url %>" alt="<%= photo.name %>" height="180" class="img-rounded">
      <% end %>
 <% end %>
