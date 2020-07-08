@@ -24,6 +24,15 @@ Rails.application.routes.draw do
   # get "login",  to: 'users#login',        as:'login'
   # post "login", to: 'users#new_session',  as:'user_new_session'
   # get "logout", to: 'users#logout',       as:'logout'
+  #api
+  #/api/v1/asdasd
+  namespace :api do
+     namespace :v1 do
+       resources :users, except: [:new,:edit]
+     end
+  end
+  
+
   #root
   root to:"photos#index"
   

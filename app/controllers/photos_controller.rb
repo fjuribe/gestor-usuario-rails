@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
 	#niega acceso a new y create  si no estas autemtificado
+  
 	before_action :authenticate_user!,only: [:new,:create,:edit,:update,:destroy]
   include PhotosHelper
   
