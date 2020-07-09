@@ -29,9 +29,22 @@ Rails.application.routes.draw do
   namespace :api do
      namespace :v1 do
        resources :users, except: [:new,:edit]
+       resources :photos, except:[:new,:edit]
      end
   end
+  #rutas del api:
+  #USER
+  #GET - http://localhost:3000/api/v1/photos
+  #POST - http://localhost:3000/api/v1/users?user[name]=francisca&user[email]=francisca@gmail.com&user[password]=123456
+  #GET -  http://localhost:3000/api/v1/users/1
+  #PUT - http://localhost:3000/api/v1/users/2?user[name]=pepito&user[email]=pepito@gmail.com
+  #DELETE - http://localhost:3000/api/v1/users/5
   
+  #PHOTO
+  #GET - http://localhost:3000/api/v1/photos
+
+
+
 
   #root
   root to:"photos#index"

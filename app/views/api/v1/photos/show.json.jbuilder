@@ -1,1 +1,1 @@
-json.partial! "photos/photo", photo: @photo
+json.partial! "api/v1/photos/photo", photo: @photo

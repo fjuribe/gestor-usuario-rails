@@ -1,4 +1,5 @@
 class Api::V1::PhotosController < ApplicationController
+  skip_before_action :verify_authenticity_token 
   before_action :set_photo, only: [:show, :update, :destroy]
 
   # GET /photos
@@ -10,6 +11,13 @@ class Api::V1::PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
+    @photo=Photo.find_by_id(params[:id])
+    if @photo
+      render json: @photo
+      #render :show, status: :ok,location: @photo
+    else
+      render json:{error:"PForo no encontrada"}, status: :not_found #404
+    end
   end
 
   # POST /photos
@@ -18,7 +26,7 @@ class Api::V1::PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
 
     if @photo.save
-      render :show, status: :created, location: @photo
+      render json: @photo, status: :created
     else
       render json: @photo.errors, status: :unprocessable_entity
     end
@@ -43,7 +51,7 @@ class Api::V1::PhotosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
-      @photo = Photo.find_by(params[:id])
+      @photo = Photo.find_by_id(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
