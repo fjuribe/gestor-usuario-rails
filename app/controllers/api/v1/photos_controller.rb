@@ -1,4 +1,5 @@
 class Api::V1::PhotosController < ApplicationController
+  include Rails::Pagination
   skip_before_action :verify_authenticity_token 
   before_action :set_photo, only: [:show, :update, :destroy]
 
@@ -6,6 +7,7 @@ class Api::V1::PhotosController < ApplicationController
   # GET /photos.json
   def index
     @photos = Photo.all
+    paginate json: @photos, per_page: 6
   end
 
   # GET /photos/1

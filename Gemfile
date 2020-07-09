@@ -64,3 +64,6 @@ gem 'devise'
 gem 'bootstrap', '~> 4.5.0'
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.5'
+
+gem "kaminari"
+gem "api-pagination"
