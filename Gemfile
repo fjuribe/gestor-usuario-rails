@@ -67,3 +67,6 @@ gem 'popper_js', '~> 1.14.5'
 
 gem "kaminari"
 gem "api-pagination"
+
+
+gem 'rack-attack'

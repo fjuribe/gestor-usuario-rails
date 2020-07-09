@@ -26,13 +26,15 @@ class User < ApplicationRecord
 
   has_many :photos
 
-#asignar un api key cuando generamos un usuario
+
+#1 generamos una migracion agregando un api key a un user
+#2 asignar un api key cuando generamos un usuario
   before_create do |user|
      user.api_key = user.generate_api_key
   end
 
 
-  #genera un unico api key
+  #3 genera un unico api key
   def generate_api_key
   	loop do
   		token = Devise.friendly_token
