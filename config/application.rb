@@ -16,7 +16,13 @@ module Pinteres
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    #configuranzo hoa local
+    config.time_zone = "America/Santiago"
 
+    #configuracion del rack-attack
     config.middleware.use Rack::Attack
+
+    #configuracion para dar soporte a idiomas
+    config.i18n.default_locale= :es
   end
 end

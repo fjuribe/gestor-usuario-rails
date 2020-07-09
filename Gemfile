@@ -70,3 +70,5 @@ gem "api-pagination"
 
 
 gem 'rack-attack'
+
+gem 'rails-i18n'
