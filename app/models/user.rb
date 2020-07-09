@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  api_key                :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  name                   :string           not null
@@ -23,5 +24,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :photo
+  has_many :photos
+
+#asignar un api key cuando generamos un usuario
+  before_create do |user|
+     user.api_key = user.generate_api_key
+  end
+
+
+  #genera un unico api key
+  def generate_api_key
+  	loop do
+  		token = Devise.friendly_token
+  		break token unless User.where(api_key: token).first
+    end
+  end
 end

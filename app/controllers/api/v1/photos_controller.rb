@@ -2,6 +2,7 @@ class Api::V1::PhotosController < ApplicationController
   include Rails::Pagination
   skip_before_action :verify_authenticity_token 
   before_action :set_photo, only: [:show, :update, :destroy]
+  before_action :authenticate_user!, only:[:create,:update,:destroy]
 
   # GET /photos
   # GET /photos.json
